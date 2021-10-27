@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.springboot.dto.Counter;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/singleton-controller")
+@Slf4j
 public class SampleSingletonController {
 	int count = 0;
 
@@ -19,7 +22,7 @@ public class SampleSingletonController {
 	public ResponseEntity<Counter> getCounter() {
 		Counter counter = new Counter();
 		counter.setCount(count++);
-		System.out.println("singleton");
+		log.info("singleton");
 		return new ResponseEntity<>(counter, HttpStatus.OK);
 	}
 }
